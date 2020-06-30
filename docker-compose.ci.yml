@@ -1,0 +1,21 @@
+version: '3'
+services:
+  api:
+    environment:
+      - APP_PORT=8080
+      - NODE_ENV=local
+      - POSTGRES_HOST=db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=postgres
+      - POSTGRES_TEST_HOST=db
+      - POSTGRES_TEST_PORT=5432
+      - POSTGRES_TEST_USER=postgres
+      - POSTGRES_TEST_PASSWORD=password
+      - POSTGRES_TEST_DB=postgres_test
+  db:
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=postgres
+      - POSTGRES_TEST_DB=postgres_test

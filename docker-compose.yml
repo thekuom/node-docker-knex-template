@@ -1,0 +1,26 @@
+version: '3'
+services:
+  api:
+    build: .
+    command: yarn start
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - db
+    ports:
+      - 8080:8080
+    networks:
+      - api-network
+  db:
+    image: postgres:12.2
+    restart: always
+    ports:
+      - 54320:5432
+    networks:
+      - api-network
+    volumes:
+      - ./scripts/init-test-db.sh:/docker-entrypoint-initdb.d/01-init-test-db.sh
+
+networks:
+  api-network:
+    external: false
