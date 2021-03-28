@@ -1,4 +1,4 @@
-FROM node:12-alpine as BASE
+FROM node:12-alpine as base
 
 RUN apk --no-cache add curl postgresql-client
 
@@ -11,11 +11,11 @@ COPY . .
 # Install dependencies
 RUN yarn install
 
-FROM BASE as BUILD
+FROM base as BUILD
 RUN yarn build
 RUN yarn build --project ./test/tsconfig.json
 
-FROM BASE as RELEASE
+FROM base as RELEASE
 # Define the url as the healthcheck
 HEALTHCHECK CMD curl --fail http://localhost:8080/api/v1/health || exit 1
 
