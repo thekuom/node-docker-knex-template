@@ -18,5 +18,5 @@ jobs:
       run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml up -d
       working-directory: ${{env.working-directory}}
     - name: Run Tests
-      run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml run honeybee-api sh -c "yarn && yarn test"
+      run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml run api sh -c "yarn && yarn test"
       working-directory: ${{env.working-directory}}
