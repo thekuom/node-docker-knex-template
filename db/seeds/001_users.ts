@@ -1,4 +1,4 @@
-import Knex from 'knex';
+import { Knex } from 'knex';
 
 import { UserRepo } from 'src/repos';
 
@@ -8,4 +8,4 @@ export async function seed(knex: Knex): Promise<any> {
   await userRepo.insertMany([{
     name: 'Test User',
   }]);
-};
+}

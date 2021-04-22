@@ -7,29 +7,24 @@
   "repository": "git@github.com:thekuom/node-docker-knex-template.git",
   "scripts": {
     "build": "yarn tsc",
-
     "start": "yarn build && yarn node -r ts-node/register/transpile-only -r tsconfig-paths/register dist/src/server.js",
     "start:dev": "yarn build && yarn ts-node -r tsconfig-paths/register src/server.ts --debug",
     "start:debug": "yarn build && yarn node --inspect=0.0.0.0:9229 -r ts-node/register -r tsconfig-paths/register src/server.ts --debug",
     "start:dev:watch": "yarn nodemon",
     "start:debug:watch": "yarn nodemon --config nodemon.debug.json",
-
     "lint": "yarn eslint --color",
-
     "test": "run-script-os",
     "test:windows": "set TS_NODE_PROJECT=.\\test\\tsconfig.json&& yarn nyc mocha \"test/**/*.test.ts\" --exit --colors --timeout 20000 --require tsconfig-paths/register --file test/setup.ts",
     "test:default": "TS_NODE_PROJECT=./test/tsconfig.json yarn nyc mocha \"test/**/*.test.ts\" --exit --colors --timeout 20000 --require tsconfig-paths/register --file test/setup.ts",
     "test:debug": "run-script-os",
     "test:debug:windows": "set TS_NODE_PROJECT=.\\test\\tsconfig.json&& yarn nyc mocha --inspect-brk=0.0.0.0:9222 \"test/**/*.test.ts\" --exit --colors --timeout 10000 --require tsconfig-paths/register --file test/setup.ts",
     "test:debug:default": "TS_NODE_PROJECT=./test/tsconfig.json yarn nyc mocha --inspect-brk=0.0.0.0:9222 \"test/**/*.test.ts\" --exit --colors --timeout 10000 --require tsconfig-paths/register --file test/setup.ts",
-
     "knex": "node -r ts-node --require tsconfig-paths/register ./node_modules/knex/bin/cli.js",
     "migrate:make": "yarn knex migrate:make -x ts",
     "migrate:up": "yarn knex migrate:latest",
     "migrate:down": "yarn knex migrate:rollback",
     "seed:make": "yarn knex seed:make -x ts",
     "seed:run": "yarn knex seed:run",
-
     "docker": "docker-compose",
     "docker:debug": "docker-compose -f docker-compose.yml -f docker-compose.debug.yml",
     "docker:run": "yarn docker run api",
@@ -75,12 +70,12 @@
     "instrument": true
   },
   "dependencies": {
-    "@dialexa/pleco-knex": "^0.3.0",
+    "@dialexa/pleco-knex": "^0.4.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-promise-router": "^3.0.3",
-    "knex": "^0.21.1",
+    "knex": "^0.95.4",
     "lodash": "^4.17.19",
     "pg": "^8.2.1",
     "ts-node": "^8.8.1",
@@ -98,8 +93,8 @@
     "@types/mocha": "^7.0.2",
     "@types/node": "^13.11.0",
     "@types/uuid": "^8.0.0",
-    "@typescript-eslint/eslint-plugin": "^2.26.0",
-    "@typescript-eslint/parser": "^2.26.0",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "chance": "^1.1.5",
@@ -116,7 +111,7 @@
     "prettier": "^2.0.2",
     "run-script-os": "^1.1.1",
     "superagent": "^5.2.2",
-    "typescript": "^3.8.3"
+    "typescript": "^4.2.4"
   },
   "engines": {
     "node": ">=12"

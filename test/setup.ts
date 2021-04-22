@@ -2,7 +2,7 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import dotenv from 'dotenv';
 import { Express } from 'express';
-import Knex from 'knex';
+import { knex as initKnex } from 'knex';
 
 dotenv.config();
 
@@ -17,7 +17,7 @@ chai.use(chaiHttp);
 
 export let TEST_APP: Express; 
 
-const knex = Knex(knexConfig);
+const knex = initKnex(knexConfig);
 
 before(async () => {
   await knex.migrate.latest();
