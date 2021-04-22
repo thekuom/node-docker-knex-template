@@ -1,7 +1,7 @@
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express, { Express, RequestHandler } from 'express';
-import Knex from 'knex';
+import { Knex, knex as initKnex } from 'knex';
 
 dotenv.config();
 
@@ -24,7 +24,7 @@ export const buildApp = async (config: Knex.Config, logLevel = 'debug'): Promise
 
   // Register middleware
   // Add knex to context
-  const knex = Knex(config);
+  const knex = initKnex(config);
   app.use((req: Request, _res, next) => {
     req.context = {
       ...req.context,

@@ -15,6 +15,7 @@ export const read = {
     const { repos: { userRepo } } = req.context;
     const { id: userId } = req.params;
 
+    debugger;
     const user = await userRepo.findById(userId);
 
     if (!user) throw new Error('not found');

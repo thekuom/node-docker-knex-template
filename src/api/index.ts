@@ -1,6 +1,6 @@
 import Express from 'express';
 import expressRouter from 'express-promise-router';
-import Knex from 'knex';
+import { Knex } from 'knex';
 
 import { config as serverConfig } from 'src/config/server';
 import { Logger } from 'src/lib/logger';
@@ -14,6 +14,12 @@ interface RequestTypeArgs {
   ResBody?: any;
   ReqBody?: any;
   Query?: any;
+}
+
+interface RequestContext {
+  logger: Logger;
+  knex: Knex;
+  repos: ReturnType<typeof getRepos>;
 }
 
 /** Re-export here in case we ever want to add on to the Request object */
@@ -31,12 +37,6 @@ export type Response<T= any> = Express.Response<T>;
  * NextFunction all from the same place
  */
 export type NextFunction = Express.NextFunction;
-
-interface RequestContext {
-  logger: Logger;
-  knex: Knex;
-  repos: ReturnType<typeof getRepos>;
-}
 
 /**
  * The structure to build a route off of

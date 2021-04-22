@@ -1,11 +1,18 @@
 import * as Pleco from '@dialexa/pleco-knex';
-import Knex from 'knex';
+import { Knex } from 'knex';
 
 import { Entity } from 'src/entities';
 
 export interface FilterSort {
   filter?: Pleco.IFilter;
   sort?: Pleco.ISort;
+}
+
+interface CursorPaginationInput {
+  /** The page size */
+  first: number;
+  /** Encoded cursor data to paginate forwards */
+  after?: string;
 }
 
 export interface FilterSortPage<TEntity> {
@@ -26,13 +33,6 @@ export interface PlecoSubqueryResult<V = any, S = any> {
   resourceId: string;
   value: V;
   sort?: S;
-}
-
-interface CursorPaginationInput {
-  /** The page size */
-  first: number;
-  /** Encoded cursor data to paginate forwards */
-  after?: string;
 }
 
 export interface CursorData {

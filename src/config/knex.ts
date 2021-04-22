@@ -1,11 +1,11 @@
-import Knex from 'knex';
+import { Knex } from 'knex';
 
 import { logger } from 'src/lib/logger';
 import { camelCase, snakeCase } from 'src/utils/changeCase';
 
 const specialChars = ['*'];
 
-const convertToCase = (val: object | string, func: Function): object | string => {
+const convertToCase = (val: any, func: any): any => {
   if (typeof val === 'string' && specialChars.includes(val)) return val;
 
   return func(val);
